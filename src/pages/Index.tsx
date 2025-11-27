@@ -79,20 +79,19 @@ const Index = () => {
     "Производство резиновых плиток"
   ];
 
-  const phoneNumber = "79991234567";
-  const telegramUsername = "yourusername";
+  const phoneNumber = "79202957177";
+  const telegramUsername = "79202957177";
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-              <Icon name="Sparkles" size={24} className="text-white" />
-            </div>
-            <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              РезКрошка
-            </h1>
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://cdn.poehali.dev/files/f1e9460a-c4d0-4bcf-a108-8b07aca90125.jpg" 
+              alt="ShellTech ABX Logo"
+              className="h-14 w-auto"
+            />
           </div>
           <div className="flex gap-3">
             <Button 
@@ -296,11 +295,12 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
-              <div className="flex items-center gap-2 justify-center md:justify-start mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                  <Icon name="Sparkles" size={24} className="text-white" />
-                </div>
-                <h4 className="text-xl font-heading font-bold">РезКрошка</h4>
+              <div className="flex items-center gap-3 justify-center md:justify-start mb-4">
+                <img 
+                  src="https://cdn.poehali.dev/files/f1e9460a-c4d0-4bcf-a108-8b07aca90125.jpg" 
+                  alt="ShellTech ABX Logo"
+                  className="h-12 w-auto"
+                />
               </div>
               <p className="text-sm text-muted-foreground">
                 Производство и продажа качественной резиновой крошки с 2015 года
