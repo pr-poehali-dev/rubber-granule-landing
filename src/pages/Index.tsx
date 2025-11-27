@@ -149,7 +149,7 @@ Email: ${formData.email}
   return (
     <div className="min-h-screen relative">
       <div 
-        className="fixed inset-0 z-0 opacity-40"
+        className="fixed inset-0 z-0 opacity-65"
         style={{
           backgroundImage: 'url(https://cdn.poehali.dev/files/ff85410c-dddb-48f5-8841-5821fb19ebed.jpg)',
           backgroundSize: 'cover',
@@ -157,7 +157,7 @@ Email: ${formData.email}
           backgroundRepeat: 'no-repeat'
         }}
       />
-      <div className="fixed inset-0 z-0 bg-gradient-to-b from-background/85 via-background/80 to-background/85" />
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-background/75 via-background/70 to-background/75" />
       <div className="relative z-10">
       <header className="sticky top-0 z-50 bg-background/98 backdrop-blur-md border-b border-border/50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -168,7 +168,16 @@ Email: ${formData.email}
               className="h-20 w-auto transition-transform hover:scale-105"
             />
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-2">
+            <Button 
+              size="sm" 
+              variant="default"
+              onClick={() => window.location.href = 'tel:+79202957177'}
+              className="gap-2"
+            >
+              <Icon name="Phone" size={16} />
+              Позвонить
+            </Button>
             <Button 
               size="sm" 
               variant="outline"
@@ -180,6 +189,7 @@ Email: ${formData.email}
             </Button>
             <Button 
               size="sm"
+              variant="outline"
               onClick={() => window.open(`https://t.me/${telegramUsername}`, '_blank')}
               className="gap-2"
             >
