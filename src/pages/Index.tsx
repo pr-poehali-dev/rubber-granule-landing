@@ -85,7 +85,7 @@ const Index = () => {
   return (
     <div className="min-h-screen relative">
       <div 
-        className="fixed inset-0 z-0 opacity-20"
+        className="fixed inset-0 z-0 opacity-25"
         style={{
           backgroundImage: 'url(https://cdn.poehali.dev/files/ff85410c-dddb-48f5-8841-5821fb19ebed.jpg)',
           backgroundSize: 'cover',
@@ -322,11 +322,11 @@ const Index = () => {
               <div className="space-y-2 text-sm text-muted-foreground">
                 <p className="flex items-center gap-2 justify-center md:justify-start">
                   <Icon name="Phone" size={16} />
-                  +7 (999) 123-45-67
+                  +7 (920) 295-71-77
                 </p>
                 <p className="flex items-center gap-2 justify-center md:justify-start">
                   <Icon name="Mail" size={16} />
-                  info@rezkroshka.ru
+                  suprug@tut.by
                 </p>
                 <p className="flex items-center gap-2 justify-center md:justify-start">
                   <Icon name="MapPin" size={16} />
