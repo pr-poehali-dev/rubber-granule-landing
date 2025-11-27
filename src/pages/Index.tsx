@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 
@@ -13,6 +14,7 @@ const Index = () => {
     name: '',
     phone: '',
     email: '',
+    product: '',
     quantity: '',
     message: ''
   });
@@ -66,6 +68,7 @@ const Index = () => {
 Имя: ${formData.name}
 Телефон: ${formData.phone}
 Email: ${formData.email}
+Продукт: ${formData.product || 'Не указан'}
 Объем заказа: ${formData.quantity} кг
 Комментарий: ${formData.message}`;
     
@@ -86,7 +89,7 @@ Email: ${formData.email}
       description: "Открыты окна для отправки через Email и WhatsApp",
     });
     
-    setFormData({ name: '', phone: '', email: '', quantity: '', message: '' });
+    setFormData({ name: '', phone: '', email: '', product: '', quantity: '', message: '' });
     setErrors({ name: '', phone: '', email: '' });
   };
 
@@ -149,7 +152,7 @@ Email: ${formData.email}
   return (
     <div className="min-h-screen relative">
       <div 
-        className="fixed inset-0 z-0 opacity-65"
+        className="fixed inset-0 z-0 opacity-77"
         style={{
           backgroundImage: 'url(https://cdn.poehali.dev/files/ff85410c-dddb-48f5-8841-5821fb19ebed.jpg)',
           backgroundSize: 'cover',
@@ -157,7 +160,7 @@ Email: ${formData.email}
           backgroundRepeat: 'no-repeat'
         }}
       />
-      <div className="fixed inset-0 z-0 bg-gradient-to-b from-background/75 via-background/70 to-background/75" />
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-background/70 via-background/65 to-background/70" />
       <div className="relative z-10">
       <header className="sticky top-0 z-50 bg-background/98 backdrop-blur-md border-b border-border/50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -359,6 +362,19 @@ Email: ${formData.email}
                   className={errors.email ? 'border-destructive' : ''}
                 />
                 {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="product">Выберите продукт</Label>
+                <Select value={formData.product} onValueChange={(value) => setFormData({...formData, product: value})}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Выберите из ассортимента" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Крошка из ореховой скорлупы">Крошка из ореховой скорлупы</SelectItem>
+                    <SelectItem value="Цветная композитная крошка">Цветная композитная крошка</SelectItem>
+                    <SelectItem value="Покрытия ShellTech Pro">Покрытия ShellTech Pro</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="quantity">Объем заказа (кг)</Label>
