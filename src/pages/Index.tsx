@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -17,8 +17,49 @@ const Index = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [errors, setErrors] = useState({
+    name: '',
+    phone: '',
+    email: ''
+  });
+
+  const validateForm = () => {
+    const newErrors = { name: '', phone: '', email: '' };
+    let isValid = true;
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Введите ваше имя';
+      isValid = false;
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Введите номер телефона';
+      isValid = false;
+    } else if (!/^[+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/.test(formData.phone.replace(/\s/g, ''))) {
+      newErrors.phone = 'Неверный формат телефона';
+      isValid = false;
+    }
+
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Неверный формат email';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      toast({
+        title: "Ошибка заполнения",
+        description: "Проверьте правильность введенных данных",
+        variant: "destructive"
+      });
+      return;
+    }
     
     const orderText = `Новая заявка ShellTech ABX:
 
@@ -46,6 +87,7 @@ Email: ${formData.email}
     });
     
     setFormData({ name: '', phone: '', email: '', quantity: '', message: '' });
+    setErrors({ name: '', phone: '', email: '' });
   };
 
   const products = [
@@ -107,7 +149,7 @@ Email: ${formData.email}
   return (
     <div className="min-h-screen relative">
       <div 
-        className="fixed inset-0 z-0 opacity-25"
+        className="fixed inset-0 z-0 opacity-40"
         style={{
           backgroundImage: 'url(https://cdn.poehali.dev/files/ff85410c-dddb-48f5-8841-5821fb19ebed.jpg)',
           backgroundSize: 'cover',
@@ -115,7 +157,7 @@ Email: ${formData.email}
           backgroundRepeat: 'no-repeat'
         }}
       />
-      <div className="fixed inset-0 z-0 bg-gradient-to-b from-background/90 via-background/85 to-background/90" />
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-background/85 via-background/80 to-background/85" />
       <div className="relative z-10">
       <header className="sticky top-0 z-50 bg-background/98 backdrop-blur-md border-b border-border/50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -269,10 +311,14 @@ Email: ${formData.email}
                 <Input 
                   id="name"
                   value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  onChange={(e) => {
+                    setFormData({...formData, name: e.target.value});
+                    if (errors.name) setErrors({...errors, name: ''});
+                  }}
                   placeholder="Иван Иванов"
-                  required
+                  className={errors.name ? 'border-destructive' : ''}
                 />
+                {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="phone">Телефон *</Label>
@@ -280,10 +326,14 @@ Email: ${formData.email}
                   id="phone"
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  onChange={(e) => {
+                    setFormData({...formData, phone: e.target.value});
+                    if (errors.phone) setErrors({...errors, phone: ''});
+                  }}
                   placeholder="+7 (999) 123-45-67"
-                  required
+                  className={errors.phone ? 'border-destructive' : ''}
                 />
+                {errors.phone && <p className="text-sm text-destructive">{errors.phone}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
@@ -291,9 +341,14 @@ Email: ${formData.email}
                   id="email"
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  onChange={(e) => {
+                    setFormData({...formData, email: e.target.value});
+                    if (errors.email) setErrors({...errors, email: ''});
+                  }}
                   placeholder="ivan@example.com"
+                  className={errors.email ? 'border-destructive' : ''}
                 />
+                {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="quantity">Объем заказа (кг)</Label>
