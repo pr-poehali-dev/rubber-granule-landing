@@ -19,17 +19,39 @@ const Index = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const orderText = `Новая заявка ShellTech ABX:
+
+Имя: ${formData.name}
+Телефон: ${formData.phone}
+Email: ${formData.email}
+Объем заказа: ${formData.quantity} кг
+Комментарий: ${formData.message}`;
+    
+    const emailSubject = encodeURIComponent('Заявка с сайта ShellTech ABX');
+    const emailBody = encodeURIComponent(orderText);
+    const mailtoLink = `mailto:suprug@tut.by?subject=${emailSubject}&body=${emailBody}`;
+    
+    const whatsappText = encodeURIComponent(orderText);
+    const whatsappLink = `https://wa.me/79202957177?text=${whatsappText}`;
+    
+    window.open(mailtoLink, '_blank');
+    setTimeout(() => {
+      window.open(whatsappLink, '_blank');
+    }, 500);
+    
     toast({
       title: "Заявка отправлена!",
-      description: "Мы свяжемся с вами в ближайшее время.",
+      description: "Открыты окна для отправки через Email и WhatsApp",
     });
+    
     setFormData({ name: '', phone: '', email: '', quantity: '', message: '' });
   };
 
   const products = [
     {
       title: "Крошка из ореховой скорлупы",
-      description: "Натуральный экологичный материал премиум-класса",
+      description: "Натуральный экологичный материал премиум-класса для различных применений",
       image: "https://cdn.poehali.dev/projects/82382b45-5902-4a5d-9ff4-9017db759178/files/c0a4efb5-b385-47fc-8d92-6809875e7fe6.jpg",
       features: ["Фракции 0.5-2 мм, 2-5 мм", "100% натуральный состав", "От 8 руб/кг"]
     },
@@ -177,8 +199,8 @@ const Index = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 animate-slide-in group bg-background/80 backdrop-blur-sm" style={{ animationDelay: `${index * 0.15}s` }}>
-              <div className="relative h-64 overflow-hidden">
+            <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 animate-slide-in group bg-background/80 backdrop-blur-sm flex flex-col" style={{ animationDelay: `${index * 0.15}s` }}>
+              <div className="relative h-64 overflow-hidden flex-shrink-0">
                 <img 
                   src={product.image} 
                   alt={product.title}
@@ -190,8 +212,8 @@ const Index = () => {
                 <CardTitle className="font-heading text-2xl">{product.title}</CardTitle>
                 <CardDescription className="text-base">{product.description}</CardDescription>
               </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
+              <CardContent className="flex-grow flex flex-col">
+                <ul className="space-y-2 flex-grow">
                   {product.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-2">
                       <Icon name="CheckCircle2" size={18} className="text-primary flex-shrink-0" />
@@ -199,7 +221,7 @@ const Index = () => {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full mt-6 gap-2" onClick={() => document.getElementById('order-form')?.scrollIntoView({ behavior: 'smooth' })}>
+                <Button className="w-full mt-6 gap-2 flex-shrink-0" onClick={() => document.getElementById('order-form')?.scrollIntoView({ behavior: 'smooth' })}>
                   <Icon name="ShoppingBag" size={18} />
                   Заказать
                 </Button>
