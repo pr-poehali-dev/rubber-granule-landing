@@ -83,14 +83,25 @@ const Index = () => {
   const telegramUsername = "79202957177";
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+    <div className="min-h-screen relative">
+      <div 
+        className="fixed inset-0 z-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'url(https://cdn.poehali.dev/files/ff85410c-dddb-48f5-8841-5821fb19ebed.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-background via-background/95 to-muted/30" />
+      <div className="relative z-10">
+      <header className="sticky top-0 z-50 bg-background/98 backdrop-blur-md border-b border-border/50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <img 
               src="https://cdn.poehali.dev/files/f1e9460a-c4d0-4bcf-a108-8b07aca90125.jpg" 
               alt="ShellTech ABX Logo"
-              className="h-14 w-auto"
+              className="h-20 w-auto transition-transform hover:scale-105"
             />
           </div>
           <div className="flex gap-3">
@@ -142,7 +153,7 @@ const Index = () => {
       <section className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {benefits.map((benefit, index) => (
-            <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 animate-fade-in hover:scale-105" style={{ animationDelay: `${index * 0.1}s` }}>
+            <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 animate-fade-in hover:scale-105 bg-background/80 backdrop-blur-sm" style={{ animationDelay: `${index * 0.1}s` }}>
               <CardHeader>
                 <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Icon name={benefit.icon} size={32} className="text-primary" />
@@ -166,7 +177,7 @@ const Index = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 animate-slide-in group" style={{ animationDelay: `${index * 0.15}s` }}>
+            <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 animate-slide-in group bg-background/80 backdrop-blur-sm" style={{ animationDelay: `${index * 0.15}s` }}>
               <div className="relative h-64 overflow-hidden">
                 <img 
                   src={product.image} 
@@ -210,7 +221,7 @@ const Index = () => {
             {applications.map((app, index) => (
               <div 
                 key={index} 
-                className="flex items-center gap-3 bg-background p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in"
+                className="flex items-center gap-3 bg-background/80 backdrop-blur-sm p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in"
                 style={{ animationDelay: `${index * 0.08}s` }}
               >
                 <Icon name="CircleDot" size={20} className="text-primary flex-shrink-0" />
@@ -222,7 +233,7 @@ const Index = () => {
       </section>
 
       <section id="order-form" className="container mx-auto px-4 py-16">
-        <Card className="max-w-2xl mx-auto shadow-2xl animate-fade-in">
+        <Card className="max-w-2xl mx-auto shadow-2xl animate-fade-in bg-background/90 backdrop-blur-md">
           <CardHeader className="text-center">
             <CardTitle className="text-3xl font-heading font-bold">Оформить заказ</CardTitle>
             <CardDescription className="text-base">
@@ -299,7 +310,7 @@ const Index = () => {
                 <img 
                   src="https://cdn.poehali.dev/files/f1e9460a-c4d0-4bcf-a108-8b07aca90125.jpg" 
                   alt="ShellTech ABX Logo"
-                  className="h-12 w-auto"
+                  className="h-16 w-auto"
                 />
               </div>
               <p className="text-sm text-muted-foreground">
@@ -348,6 +359,7 @@ const Index = () => {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 };
