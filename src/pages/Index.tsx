@@ -28,45 +28,45 @@ const Index = () => {
 
   const products = [
     {
-      title: "Черная резиновая крошка",
-      description: "Универсальная крошка из переработанных шин",
+      title: "Крошка из ореховой скорлупы",
+      description: "Натуральный экологичный материал премиум-класса",
       image: "https://cdn.poehali.dev/projects/82382b45-5902-4a5d-9ff4-9017db759178/files/c0a4efb5-b385-47fc-8d92-6809875e7fe6.jpg",
-      features: ["Фракции 1-3 мм, 2-4 мм, 3-5 мм", "ГОСТ 52918-2008", "От 5 руб/кг"]
+      features: ["Фракции 0.5-2 мм, 2-5 мм", "100% натуральный состав", "От 8 руб/кг"]
     },
     {
-      title: "Цветная EPDM крошка",
-      description: "Яркая долговечная крошка для детских площадок",
+      title: "Цветная композитная крошка",
+      description: "Инновационная смесь с добавлением EPDM",
       image: "https://cdn.poehali.dev/projects/82382b45-5902-4a5d-9ff4-9017db759178/files/96eedc5e-8856-4834-924b-6213aa6e63bb.jpg",
-      features: ["15+ цветов", "UV-стабильная", "От 45 руб/кг"]
+      features: ["Яркие натуральные оттенки", "Устойчивость к UV", "От 50 руб/кг"]
     },
     {
-      title: "Спортивные покрытия",
-      description: "Готовые решения для спортивных объектов",
+      title: "Покрытия ShellTech Pro",
+      description: "Профессиональные решения на основе ореховой крошки",
       image: "https://cdn.poehali.dev/projects/82382b45-5902-4a5d-9ff4-9017db759178/files/796b4d0a-a865-4475-9f1a-f13da673b03c.jpg",
-      features: ["Монтаж под ключ", "Гарантия 5 лет", "Расчет за 1 день"]
+      features: ["Полный цикл от производства до монтажа", "Гарантия 7 лет", "Бесплатный расчет"]
     }
   ];
 
   const benefits = [
     {
-      icon: "Shield",
-      title: "Безопасность",
-      description: "Сертифицированная продукция, соответствует всем нормам безопасности"
+      icon: "Leaf",
+      title: "Эко-технологии",
+      description: "100% натуральное сырье из скорлупы грецкого ореха, безопасно для природы"
     },
     {
       icon: "Zap",
       title: "Быстрая доставка",
-      description: "Собственная логистика, доставка по России за 3-7 дней"
+      description: "Собственное производство и логистика, отгрузка в день заказа"
     },
     {
       icon: "Award",
-      title: "Качество",
-      description: "Производство на современном оборудовании с контролем качества"
+      title: "Премиум качество",
+      description: "Инновационное оборудование ShellTech с многоступенчатым контролем"
     },
     {
-      icon: "Wallet",
-      title: "Выгодные цены",
-      description: "Прямые поставки от производителя без посредников"
+      icon: "Factory",
+      title: "Полный цикл",
+      description: "От переработки сырья до готовых спортивных покрытий под ключ"
     }
   ];
 
@@ -85,7 +85,7 @@ const Index = () => {
   return (
     <div className="min-h-screen relative">
       <div 
-        className="fixed inset-0 z-0 opacity-[0.03]"
+        className="fixed inset-0 z-0 opacity-20"
         style={{
           backgroundImage: 'url(https://cdn.poehali.dev/files/ff85410c-dddb-48f5-8841-5821fb19ebed.jpg)',
           backgroundSize: 'cover',
@@ -93,7 +93,7 @@ const Index = () => {
           backgroundRepeat: 'no-repeat'
         }}
       />
-      <div className="fixed inset-0 z-0 bg-gradient-to-b from-background via-background/95 to-muted/30" />
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-background/90 via-background/85 to-background/90" />
       <div className="relative z-10">
       <header className="sticky top-0 z-50 bg-background/98 backdrop-blur-md border-b border-border/50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -129,13 +129,13 @@ const Index = () => {
       <section className="container mx-auto px-4 py-20 animate-fade-in">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h2 className="text-5xl md:text-6xl font-heading font-bold leading-tight">
-            Производство резиновой крошки
+            <span className="text-foreground">ShellTech ABX</span>
             <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mt-2">
-              премиум качества
+              технологии переработки скорлупы
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Поставляем сертифицированную резиновую крошку для спортивных и детских площадок по всей России
+          <p className="text-xl text-foreground/80 max-w-2xl mx-auto font-medium">
+            Производим премиальную резиновую крошку из скорлупы грецкого ореха для спортивных покрытий и ландшафтного дизайна
           </p>
           <div className="flex flex-wrap gap-4 justify-center pt-4">
             <Button size="lg" className="gap-2" onClick={() => document.getElementById('order-form')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -170,9 +170,9 @@ const Index = () => {
 
       <section id="products" className="container mx-auto px-4 py-16">
         <div className="text-center mb-12 animate-fade-in">
-          <h3 className="text-4xl font-heading font-bold mb-4">Наша продукция</h3>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Широкий ассортимент резиновой крошки для любых задач
+          <h3 className="text-4xl font-heading font-bold mb-4">Продукция ShellTech</h3>
+          <p className="text-foreground/70 text-lg max-w-2xl mx-auto font-medium">
+            Инновационные материалы на основе натуральной ореховой скорлупы
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -212,9 +212,9 @@ const Index = () => {
       <section className="bg-muted/50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-fade-in">
-            <h3 className="text-4xl font-heading font-bold mb-4">Применение</h3>
-            <p className="text-muted-foreground text-lg">
-              Где используется резиновая крошка
+            <h3 className="text-4xl font-heading font-bold mb-4">Применение технологий</h3>
+            <p className="text-foreground/70 text-lg font-medium">
+              Сферы использования материалов ShellTech ABX
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
@@ -235,9 +235,9 @@ const Index = () => {
       <section id="order-form" className="container mx-auto px-4 py-16">
         <Card className="max-w-2xl mx-auto shadow-2xl animate-fade-in bg-background/90 backdrop-blur-md">
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl font-heading font-bold">Оформить заказ</CardTitle>
-            <CardDescription className="text-base">
-              Заполните форму, и мы свяжемся с вами в течение 15 минут
+            <CardTitle className="text-3xl font-heading font-bold">Связаться с ShellTech</CardTitle>
+            <CardDescription className="text-base font-medium">
+              Оставьте заявку, и наш специалист свяжется с вами в течение 15 минут
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -313,8 +313,8 @@ const Index = () => {
                   className="h-16 w-auto"
                 />
               </div>
-              <p className="text-sm text-muted-foreground">
-                Производство и продажа качественной резиновой крошки с 2015 года
+              <p className="text-sm text-muted-foreground font-medium">
+                ShellTech ABX — инновационные технологии переработки ореховой скорлупы с 2018 года
               </p>
             </div>
             <div>
@@ -355,7 +355,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>© 2024 РезКрошка. Все права защищены.</p>
+            <p>© 2024 ShellTech ABX. Все права защищены.</p>
           </div>
         </div>
       </footer>
